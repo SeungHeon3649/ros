@@ -1,9 +1,4 @@
 # ros-controller
 
-**※ ros 경로추종제어기를 만들기 위한 과정**
-
-**1. turtlesim을 이용한 목표점 이동**  
-https://www.youtube.com/watch?v=oIZxgC9VQF0  
-
-**2. gazebo simulation을 이용한 목표점 이동**  
-https://www.youtube.com/watch?v=Ot3r9NmQzZc
+**※ gazebo simulation을 이용하여 사용자가 목표점을 입력하면 로봇이 목표점으로 이동**  
+**※ 동작 영상**  
