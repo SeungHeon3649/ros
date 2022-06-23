@@ -1,5 +1,8 @@
 # turtlesim을 이용해 목표점으로 이동
 
+※ **ros 기본패키지인 turtlesim을 이용하여 사용자가 목표점을 입력하면 목표점으로 거북이가 이동하는 프로그램**  
+※ **동작 영상**  
+https://www.youtube.com/watch?v=oIZxgC9VQF0  
 
 
 **1. 작업을 위해 패키지를 만든다**  
@@ -21,9 +24,10 @@ $ roscore
 **7. ros 기본 패키지인 터틀심 노드 실행**  
 $ rosrun turtlesim turtlesim_node  
 
-![turtlesim](https://user-images.githubusercontent.com/94602281/175324991-e01f681c-f9c6-491f-9ee6-01b8b1a6880c.png)
+![turtlesim](https://user-images.githubusercontent.com/94602281/175324991-e01f681c-f9c6-491f-9ee6-01b8b1a6880c.png)  
 
-https://www.youtube.com/watch?v=oIZxgC9VQF0  
+**8. drive_base 실행**  
+$ rosrun drive_base_tutorial drive_base
 
-※**gazebo simulation을 이용한 목표점 이동**  
-https://www.youtube.com/watch?v=Ot3r9NmQzZc
+![goal](https://user-images.githubusercontent.com/94602281/175326292-263dc99c-11ef-4c3c-ac02-05214edce9af.png)  
+
