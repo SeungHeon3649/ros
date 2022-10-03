@@ -1,4 +1,4 @@
-# ros-controller
+# ros
 
 **※ ros 경로추종제어기를 만들기 위한 과정**
 
