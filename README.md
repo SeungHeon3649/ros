@@ -1,6 +1,6 @@
 # ros
 
-**※ ros 경로추종제어기를 만들기 위한 과정**
+**※ 호텔서비스 로봇을 만들기 위한 과정 **
 
 [**1. turtlesim을 이용한 목표점 이동**](https://github.com/SeungHeon3649/ros-controller/tree/turtlesim)  
 **※ 영상주소**  
