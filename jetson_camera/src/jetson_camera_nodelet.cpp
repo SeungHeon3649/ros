@@ -5,11 +5,13 @@
 #include <image_transport/image_transport.h>
 #include <camera_info_manager/camera_info_manager.h>
 #include <cv_bridge/cv_bridge.h>
+#include <sensor_msgs/image_encodings.h>
 
 #include <memory>
 #include <thread>
 #include <functional>
 #include <atomic>
+using namespace cv;
 
 namespace jetson_camera
 {
@@ -33,6 +35,12 @@ private:
 
 	ros::NodeHandle nh_, nh_priv_;
 	image_transport::CameraPublisher pub_;
+	image_transport::Subscriber copy_sub; //+
+	image_transport::Publisher copy_pub; //+
+	cv_bridge::CvImagePtr cv_ptr;//+
+	sensor_msgs::ImageConstPtr copy_msg;//+
+	//Mat dst;
+
 	int cap_width_, cap_height_;
 	int width_, height_, framerate_;
 	int flip_method_;
@@ -102,12 +110,22 @@ private:
 		cap_thread_ = std::shared_ptr<std::thread>(new std::thread(std::bind(&JetsonCameraNodelet::captureFunc, this)));
 	}
 
+	void copyCallback(const sensor_msgs::ImageConstPtr& msg)
+	{
+		//cv_ptr = cv_bridge::toCvCopy(msg, sensor_msgs::image_encodings::BGR8);
+		copy_msg = msg;
+	}
+
 	void captureFunc()
 	{
 		std::string pipeline = gstreamer_pipeline(cap_width_, cap_height_, width_, height_, framerate_, flip_method_);
 		NODELET_INFO("Pipeline: %s", pipeline.c_str());
 		cv::VideoCapture cap(pipeline, cv::CAP_GSTREAMER);
 		cv_bridge::CvImage img;
+		image_transport::ImageTransport it_(nh_); //+
+		copy_sub = it_.subscribe("/main_camera/image_raw", 1, &JetsonCameraNodelet::copyCallback, this); //+
+		copy_pub = it_.advertise("copy_img", 1); //+
+		//Mat copy; //+
 		img.encoding = sensor_msgs::image_encodings::BGR8;
 		img.header.frame_id = frame_id_;
 
@@ -118,6 +136,9 @@ private:
 				img.header.stamp = ros::Time::now() - ros::Duration(delay_);
 				cam_info_.header.stamp = img.header.stamp;
 				pub_.publish(*img.toImageMsg(), cam_info_);
+				// putText(cv_ptr->image, "copy", Point(50, 50), 
+				// FONT_HERSHEY_SIMPLEX, 2.5, Scalar(255, 255, 255), 3);
+				copy_pub.publish(copy_msg);
 			}
 		}
 	}
