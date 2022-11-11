@@ -12,4 +12,4 @@ https://www.youtube.com/watch?v=Ot3r9NmQzZc
 
 [**3. SLAM**](https://github.com/SeungHeon3649/ros/tree/SLAM)  
 **※ 영상주소**  
-https://www.youtube.com/watch?v=Ot3r9NmQzZc
+https://www.youtube.com/watch?v=nXYEexqR8kc
