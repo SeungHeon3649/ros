@@ -16,4 +16,4 @@ https://www.youtube.com/watch?v=nXYEexqR8kc
 
 [**3. navigation**](https://github.com/SeungHeon3649/ros/tree/navigation)  
 **※ 영상주소**  
-https://www.youtube.com/watch?v=nXYEexqR8kc
+https://www.youtube.com/watch?v=xiiDJcAXlBM
